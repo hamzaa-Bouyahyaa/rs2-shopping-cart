@@ -2,6 +2,10 @@
 
 A small shopping cart application with a login page and a product page where a user searches for a product by name and type, sets a quantity, and adds it to their basket.
 
+**Live demo:** [https://rs2-shopping-cart.onrender.com](https://rs2-shopping-cart.onrender.com) — log in with `rs2user` / `Password` (see [all seeded users](#getting-started)).
+
+> Hosted on Render's free tier, which sleeps after ~15 minutes idle and takes ~1 minute to wake, so the first load may be slow.
+
 ## Stack
 
 
@@ -17,12 +21,21 @@ SQLite was chosen over Oracle to keep the project runnable with zero external se
 
 ## Getting started
 
-Requirements: Node.js 18 or later.
+Requirements: Node.js 20 or later.
 
 ```bash
 npm run install:all   # installs root, server and client dependencies
 npm run dev           # starts the API on :3000 and the client on :5173
 ```
+
+### Running in production
+
+```bash
+npm run build   # installs deps and builds the client into client/dist
+npm start       # single same-origin service: Express serves the API + built client
+```
+
+In production the Express server serves the compiled client from `client/dist` on `$PORT`, so the API and UI share one origin (no CORS or cookie-domain configuration needed). Full deployment guide (Render, Docker): see [DEPLOY.md](DEPLOY.md).
 
 Open [http://localhost:5173](http://localhost:5173) and log in with the seeded user:
 
@@ -119,8 +132,6 @@ Behind a proxy or load balancer, set `app.set('trust proxy', 1)` so the rate lim
 
 7. **Search interpretation** : The grid/table on the product page holds the basket result set, per "the searched product together with the quantity will be added to the table present on the same page". The ADD button performs the lookup; the autocomplete on the name field covers the exploratory side of searching.
 
-
-
 ## Extensions beyond the brief
 
 These were added deliberately after the core requirements were complete:
@@ -136,7 +147,9 @@ These were added deliberately after the core requirements were complete:
 ## Testing
 
 ```bash
-npm test
+npm test                      # runs both suites (server, then client)
+npm test --prefix server      # Jest (server) only
+npm test --prefix client      # Vitest (client) only
 ```
 
 Server tests (Jest) cover the validation rules (product and login), the basket service against an in-memory database (including duplicate, not-found and removal paths), and the full API flow through Supertest (login incl. 400s, auth guard, basket 201/400/404/409, removal 204/400/404, suggestions incl. type filtering). Client tests (Vitest + Testing Library) cover the product name validation rule and the SearchPanel and ProductGrid components (disabled-until-valid ADD, inline validation feedback, digit-only quantity, autocomplete selection, row removal).
