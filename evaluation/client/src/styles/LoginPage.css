@@ -54,6 +54,18 @@
   margin-top: 0.875rem;
 }
 
+.login-hint {
+  margin: 1.25rem 0 0;
+  color: var(--muted);
+  font-size: 0.8125rem;
+  text-align: center;
+}
+
+.login-hint strong {
+  color: var(--ink);
+  font-weight: 500;
+}
+
 .form-error {
   margin: 0 0 0.875rem;
   padding: 0.5625rem 0.75rem;

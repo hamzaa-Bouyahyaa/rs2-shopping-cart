@@ -16,6 +16,10 @@ export default function LoginPage({ onLogin }) {
         <h1>RS2 Shopping Cart</h1>
         <p className="login-subtitle">Sign in to continue</p>
         <LoginForm onLogin={handleLogin} />
+        <p className="login-hint">
+          Demo users: <strong>rs2user</strong>, <strong>isaac</strong> or{' '}
+          <strong>neil</strong>. Password: <strong>Password</strong>
+        </p>
       </section>
     </main>
   );

@@ -7,7 +7,7 @@ function authenticate(loginName, password) {
   }
 
   const user = getDb()
-    .prepare('SELECT UserID, LoginName, Password FROM User WHERE LoginName = ?')
+    .prepare('SELECT UserID, LoginName, Password FROM User WHERE LoginName = ? COLLATE NOCASE')
     .get(loginName);
 
   if (!user || !bcrypt.compareSync(password, user.Password)) {
