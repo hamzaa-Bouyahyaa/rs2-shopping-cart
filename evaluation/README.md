@@ -54,6 +54,7 @@ client/
   src/
     pages/        LoginPage, ProductPage
     components/   LoginForm, SearchPanel, ProductGrid (+ component tests)
+    icons/        reusable SVG icon components (EyeIcon, EyeOffIcon)
     services/     api.js, the only place that calls fetch
     validation/   product name rule + unit tests
     styles/       one CSS file per component, no inline styles
