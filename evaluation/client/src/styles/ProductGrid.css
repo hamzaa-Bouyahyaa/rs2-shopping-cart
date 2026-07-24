@@ -1,0 +1,83 @@
+/* Scrolls sideways on narrow screens so the table keeps a readable minimum
+   width. */
+.product-grid-container {
+  overflow-x: auto;
+  background-color: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.product-grid {
+  width: 100%;
+  min-width: 40rem;
+  border-collapse: collapse;
+}
+
+.product-grid th,
+.product-grid td {
+  padding: 0.875rem 1.375rem;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.9rem;
+}
+
+.product-grid th {
+  background-color: var(--brand-wash);
+  border-bottom-color: rgba(50, 65, 217, 0.14);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--brand-dark);
+}
+
+.product-grid tbody tr {
+  transition: background-color 0.16s ease;
+}
+
+.product-grid tbody tr:hover {
+  background-color: var(--canvas);
+}
+
+.product-grid tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.col-quantity {
+  text-align: right;
+  width: 6rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.col-actions {
+  text-align: right;
+  width: 7.5rem;
+}
+
+/* Quiet outlined button that only turns red on hover. */
+.remove-button {
+  padding: 0.3125rem 0.8125rem;
+  font-size: 0.75rem;
+  color: var(--muted);
+  background-color: var(--surface);
+  background-image: none;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+
+.remove-button:hover:enabled {
+  color: var(--error);
+  background-color: var(--error-wash);
+  border-color: rgba(217, 45, 32, 0.35);
+  box-shadow: none;
+  filter: none;
+}
+
+.remove-button:focus-visible {
+  outline-color: var(--error);
+}
+
+.empty-state {
+  color: var(--muted);
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+}

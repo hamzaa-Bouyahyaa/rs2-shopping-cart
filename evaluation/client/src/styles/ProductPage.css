@@ -1,0 +1,121 @@
+.product-page {
+  min-height: 100vh;
+}
+
+.product-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.125rem 2rem;
+  background-color: var(--surface);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Gradient rule along the bottom edge so the brand color is always visible. */
+.product-header::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  background-image: var(--brand-gradient);
+}
+
+.product-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Brand tile standing in for a product logo. */
+.product-mark {
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 8px;
+  background-image: var(--brand-gradient);
+}
+
+.product-header h1 {
+  font-weight: 400;
+}
+
+.product-header-user {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.875rem;
+}
+
+.product-header-user span {
+  color: var(--muted);
+}
+
+/* Outlined so the filled gradient stays reserved for the primary action. */
+.product-header-user button {
+  padding: 0.5rem 1.125rem;
+  color: var(--brand);
+  background-color: var(--surface);
+  background-image: none;
+  border-color: rgba(50, 65, 217, 0.32);
+}
+
+.product-header-user button:hover:enabled {
+  color: var(--brand-dark);
+  background-color: var(--brand-wash);
+  border-color: var(--brand);
+  box-shadow: none;
+  filter: none;
+}
+
+.product-content {
+  max-width: 62rem;
+  margin: 0 auto;
+  padding: 2.5rem 2rem 4rem;
+}
+
+.basket-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0 0 0.875rem;
+}
+
+.basket-heading h2 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.basket-count {
+  padding: 0.125rem 0.625rem;
+  font-size: 0.75rem;
+  color: var(--brand-dark);
+  background-color: var(--brand-wash);
+  border-radius: 999px;
+}
+
+.load-error {
+  margin: 0 0 1.25rem;
+  padding: 0.6875rem 0.875rem;
+  color: var(--error);
+  font-size: 0.8125rem;
+  background-color: var(--error-wash);
+  border: 1px solid rgba(217, 45, 32, 0.22);
+  border-radius: var(--radius);
+}
+
+@media (max-width: 640px) {
+  .product-header {
+    padding: 0.75rem 1rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .product-content {
+    padding: 1.5rem 1rem 3rem;
+  }
+}

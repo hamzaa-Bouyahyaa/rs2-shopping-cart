@@ -1,0 +1,15 @@
+# Render Blueprint: one web service that serves both the API and the built client.
+services:
+  - type: web
+    name: rs2-shopping-cart
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: 22
+      - key: NODE_ENV
+        value: production
+      - key: SESSION_SECRET
+        generateValue: true

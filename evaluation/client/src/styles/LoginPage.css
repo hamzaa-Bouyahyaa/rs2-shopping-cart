@@ -1,0 +1,65 @@
+/* Brand-tinted wash behind the card, echoing the gradient on the RS2 site. */
+.login-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 1.5rem;
+  background-image:
+    radial-gradient(46rem 30rem at 50% -8%, rgba(77, 110, 255, 0.14), transparent 62%),
+    radial-gradient(34rem 24rem at 8% 105%, rgba(50, 65, 217, 0.08), transparent 60%);
+}
+
+.login-card {
+  position: relative;
+  width: 100%;
+  max-width: 23rem;
+  padding: 2.75rem 2.25rem 2.5rem;
+  overflow: hidden;
+  background-color: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Gradient rule across the top of the card. */
+.login-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background-image: var(--brand-gradient);
+}
+
+.login-card h1 {
+  font-size: 1.625rem;
+  font-weight: 300;
+}
+
+.login-subtitle {
+  margin: 0.5rem 0 2rem;
+  color: var(--muted);
+  font-size: 0.9375rem;
+  font-weight: 300;
+}
+
+.login-form .form-field {
+  margin-bottom: 1.125rem;
+}
+
+.login-form button {
+  width: 100%;
+  margin-top: 0.875rem;
+}
+
+.form-error {
+  margin: 0 0 0.875rem;
+  padding: 0.5625rem 0.75rem;
+  color: var(--error);
+  font-size: 0.8125rem;
+  background-color: var(--error-wash);
+  border: 1px solid rgba(217, 45, 32, 0.22);
+  border-radius: var(--radius);
+}
