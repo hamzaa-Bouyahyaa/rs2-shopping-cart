@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import * as api from '../services/api';
+import { EyeIcon, EyeOffIcon } from '../icons';
 
 // Field lengths follow the User table from the brief: Varchar2(20) for both.
 const MAX_FIELD_LENGTH = 20;
@@ -7,6 +8,7 @@ const MAX_FIELD_LENGTH = 20;
 export default function LoginForm({ onLogin }) {
   const [loginName, setLoginName] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState(null);
   const [submitting, setSubmitting] = useState(false);
 
@@ -47,14 +49,25 @@ export default function LoginForm({ onLogin }) {
 
       <div className="form-field">
         <label htmlFor="password">Password</label>
-        <input
-          id="password"
-          type="password"
-          value={password}
-          maxLength={MAX_FIELD_LENGTH}
-          autoComplete="current-password"
-          onChange={(event) => setPassword(event.target.value)}
-        />
+        <div className="password-field">
+          <input
+            id="password"
+            type={showPassword ? 'text' : 'password'}
+            value={password}
+            maxLength={MAX_FIELD_LENGTH}
+            autoComplete="current-password"
+            onChange={(event) => setPassword(event.target.value)}
+          />
+          <button
+            type="button"
+            className="password-toggle"
+            onClick={() => setShowPassword((visible) => !visible)}
+            aria-label={showPassword ? 'Hide password' : 'Show password'}
+            aria-pressed={showPassword}
+          >
+            {showPassword ? <EyeOffIcon /> : <EyeIcon />}
+          </button>
+        </div>
       </div>
 
       {error && (

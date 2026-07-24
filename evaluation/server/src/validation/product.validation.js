@@ -3,7 +3,6 @@
 const PRODUCT_NAME_PATTERN = /^[A-Za-z]{1,30}$/; // brief: characters [A-Za-z], length 30
 const PRODUCT_TYPES = ['Books', 'Music', 'Games'];
 const QUANTITY_MIN = 1;
-const QUANTITY_MAX = 999;
 
 function isValidProductName(name) {
   return typeof name === 'string' && PRODUCT_NAME_PATTERN.test(name);
@@ -14,11 +13,7 @@ function isValidProductType(type) {
 }
 
 function isValidQuantity(quantity) {
-  return (
-    Number.isInteger(quantity) &&
-    quantity >= QUANTITY_MIN &&
-    quantity <= QUANTITY_MAX
-  );
+  return Number.isInteger(quantity) && quantity >= QUANTITY_MIN;
 }
 
 
@@ -30,7 +25,7 @@ function validateAddToBasket({ name, type, quantity } = {}) {
     return `Product type must be one of: ${PRODUCT_TYPES.join(', ')}.`;
   }
   if (!isValidQuantity(quantity)) {
-    return `Quantity must be a whole number between ${QUANTITY_MIN} and ${QUANTITY_MAX}.`;
+    return `Quantity must be a whole number of at least ${QUANTITY_MIN}.`;
   }
   return null;
 }
@@ -39,7 +34,6 @@ module.exports = {
   PRODUCT_NAME_PATTERN,
   PRODUCT_TYPES,
   QUANTITY_MIN,
-  QUANTITY_MAX,
   isValidProductName,
   isValidProductType,
   isValidQuantity,

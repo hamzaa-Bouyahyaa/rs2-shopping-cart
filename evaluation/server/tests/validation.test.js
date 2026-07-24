@@ -37,11 +37,11 @@ describe('product type validation', () => {
 });
 
 describe('quantity validation', () => {
-  test.each([1, 2, 999])('accepts %p', (quantity) => {
+  test.each([1, 2, 999, 100000])('accepts %p', (quantity) => {
     expect(isValidQuantity(quantity)).toBe(true);
   });
 
-  test.each([0, -1, 1000, 1.5, '2', NaN, null, undefined])(
+  test.each([0, -1, 1.5, '2', NaN, null, undefined])(
     'rejects %p',
     (quantity) => {
       expect(isValidQuantity(quantity)).toBe(false);

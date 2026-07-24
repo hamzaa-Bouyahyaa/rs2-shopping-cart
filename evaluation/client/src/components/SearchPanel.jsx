@@ -8,7 +8,6 @@ import '../styles/SearchPanel.css';
 
 const PRODUCT_TYPES = ['Books', 'Music', 'Games'];
 const QUANTITY_MIN = 1;
-const QUANTITY_MAX = 999;
 const SUGGESTION_DEBOUNCE_MS = 500;
 
 export default function SearchPanel({ onAdd }) {
@@ -31,9 +30,7 @@ export default function SearchPanel({ onAdd }) {
 
   const quantityNumber = Number(quantity);
   const quantityValid =
-    Number.isInteger(quantityNumber) &&
-    quantityNumber >= QUANTITY_MIN &&
-    quantityNumber <= QUANTITY_MAX;
+    Number.isInteger(quantityNumber) && quantityNumber >= QUANTITY_MIN;
 
   const formValid = nameError === null && type !== '' && quantityValid;
 

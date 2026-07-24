@@ -33,7 +33,7 @@ describe('LoginForm', () => {
     const { user, onLogin } = setup();
 
     await user.type(screen.getByLabelText(/login name/i), '  rs2user  ');
-    await user.type(screen.getByLabelText(/password/i), 'Password');
+    await user.type(screen.getByLabelText('Password'), 'Password');
     await user.click(screen.getByRole('button', { name: /login/i }));
 
     expect(api.login).toHaveBeenCalledWith('rs2user', 'Password');
@@ -45,7 +45,7 @@ describe('LoginForm', () => {
     const { user, onLogin } = setup();
 
     await user.type(screen.getByLabelText(/login name/i), 'rs2user');
-    await user.type(screen.getByLabelText(/password/i), 'wrong');
+    await user.type(screen.getByLabelText('Password'), 'wrong');
     await user.click(screen.getByRole('button', { name: /login/i }));
 
     expect(await screen.findByText(/invalid login name or password/i)).toBeInTheDocument();
@@ -60,7 +60,7 @@ describe('LoginForm', () => {
     const { user } = setup();
 
     await user.type(screen.getByLabelText(/login name/i), 'rs2user');
-    await user.type(screen.getByLabelText(/password/i), 'Password');
+    await user.type(screen.getByLabelText('Password'), 'Password');
     await user.click(screen.getByRole('button', { name: /login/i }));
 
     expect(await screen.findByText(/network error/i)).toBeInTheDocument();

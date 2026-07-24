@@ -92,7 +92,7 @@ Behind a proxy or load balancer, set `app.set('trust proxy', 1)` so the rate lim
 
 - While typing, the name field offers autocomplete suggestions (prefix match, case-insensitive, narrowed by the selected type if one is chosen). Suggestions can be navigated with the arrow keys and chosen with Enter or a click; choosing one also fills in the product type if none was selected. Autocomplete is a convenience layer, the form works identically if the suggestion request fails.
 
-- The quantity field accepts digits only (pasting or typing `e`, signs or decimals is ignored), between 1 and 999.
+- The quantity field accepts digits only (pasting or typing `e`, signs or decimals is ignored), 1 or greater.
 
 - ADD looks the product up by name (case-insensitive) and type. An unknown product returns an inline "Product not found" message.
 
@@ -116,9 +116,7 @@ Behind a proxy or load balancer, set `app.set('trust proxy', 1)` so the rate lim
 
 6. **Length limits enforced in code** : SQLite does not enforce VARCHAR lengths, so the Varchar2 limits from the brief are enforced in the validation layer on both client and server. Login fields are likewise validated server-side against their Varchar2(20) lengths.
 
-7. **Quantity upper bound** : The brief specifies no maximum quantity; a bound of 999 was chosen so the field cannot hold arbitrarily large numbers. It is defined in one place per side (`QUANTITY_MAX`) and easy to change.
-
-8. **Search interpretation** : The grid/table on the product page holds the basket result set, per "the searched product together with the quantity will be added to the table present on the same page". The ADD button performs the lookup; the autocomplete on the name field covers the exploratory side of searching.
+7. **Search interpretation** : The grid/table on the product page holds the basket result set, per "the searched product together with the quantity will be added to the table present on the same page". The ADD button performs the lookup; the autocomplete on the name field covers the exploratory side of searching.
 
 
 
