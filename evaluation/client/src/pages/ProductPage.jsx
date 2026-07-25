@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import SearchPanel from '../components/SearchPanel';
 import ProductGrid from '../components/ProductGrid';
-import Avatar from '../components/Avatar';
+import UserMenu from '../components/UserMenu';
 import * as api from '../services/api';
 import '../styles/ProductPage.css';
 
@@ -77,13 +77,7 @@ export default function ProductPage({ user, onLogout }) {
           />
           <h1>Shopping Cart</h1>
         </div>
-        <div className="product-header-user">
-          <Avatar name={user.loginName} />
-          <span>{user.loginName}</span>
-          <button type="button" onClick={handleLogout}>
-            Logout
-          </button>
-        </div>
+        <UserMenu user={user} onLogout={handleLogout} />
       </header>
 
       <main className="product-content">

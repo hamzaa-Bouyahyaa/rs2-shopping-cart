@@ -1,0 +1,86 @@
+/* Desktop: the panel is the plain inline header cluster. */
+.user-menu-panel {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.875rem;
+}
+
+.user-menu-panel span {
+  color: var(--muted);
+}
+
+/* Outlined so the filled gradient stays reserved for the primary action. */
+.user-menu-panel button {
+  padding: 0.5rem 1.125rem;
+  color: var(--brand);
+  background-color: var(--surface);
+  background-image: none;
+  border-color: rgba(50, 65, 217, 0.32);
+}
+
+.user-menu-panel button:hover:enabled {
+  color: var(--brand-dark);
+  background-color: var(--brand-wash);
+  border-color: var(--brand);
+  box-shadow: none;
+  filter: none;
+}
+
+.user-menu-toggle {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  /* Plain icon button; the global gradient button style does not belong here. */
+  .user-menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.25rem;
+    color: var(--ink);
+    background: none;
+    border: none;
+  }
+
+  .user-menu-toggle:hover:enabled {
+    color: var(--brand);
+    background: none;
+    transform: none;
+    box-shadow: none;
+    filter: none;
+  }
+
+  .user-menu-toggle svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+
+  .user-menu-panel {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    display: none;
+    justify-content: flex-end;
+    padding: 0.875rem 1rem;
+    background-color: var(--surface);
+    border-bottom: 1px solid var(--line);
+    box-shadow: var(--shadow-md);
+  }
+
+  .user-menu-panel.is-open {
+    display: flex;
+    animation: user-menu-in 150ms ease-out;
+  }
+}
+
+/* An animation rather than a transition: display none cannot transition,
+   and the global reduced-motion rule already zeroes this out. */
+@keyframes user-menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+}
