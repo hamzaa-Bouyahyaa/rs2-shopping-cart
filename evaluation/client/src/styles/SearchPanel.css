@@ -110,7 +110,7 @@
 }
 
 /* On small screens the fields stack vertically and the button spans the row. */
-@media (max-width: 728px) {
+@media (max-width: 751px) {
   .search-panel {
     flex-direction: column;
     align-items: stretch;
