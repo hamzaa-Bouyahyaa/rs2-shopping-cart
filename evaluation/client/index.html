@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>RS2 Shopping Cart</title>
+    <!-- Pre-paint: apply the saved theme before CSS and React load (no flash). Keep in sync with src/theme/theme.js. -->
+    <script>
+      try { var t = localStorage.getItem('rs2-theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) {}
+    </script>
     <!-- Lexend is the RS2 brand typeface. Falls back to the system stack offline. -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

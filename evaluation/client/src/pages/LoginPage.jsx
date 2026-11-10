@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import LoginForm from '../components/LoginForm';
+import ThemeToggle from '../components/ThemeToggle';
 import '../styles/LoginPage.css';
 
 export default function LoginPage({ onLogin }) {
@@ -12,6 +13,7 @@ export default function LoginPage({ onLogin }) {
 
   return (
     <main className="login-page">
+      <ThemeToggle />
       <section className="login-card">
         <h1>RS2 Shopping Cart</h1>
         <p className="login-subtitle">Sign in to continue</p>

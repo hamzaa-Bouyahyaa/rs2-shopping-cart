@@ -1,5 +1,6 @@
 /* Brand-tinted wash behind the card, echoing the gradient on the RS2 site. */
 .login-page {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
