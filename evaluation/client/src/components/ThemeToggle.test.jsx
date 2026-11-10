@@ -31,12 +31,14 @@ function setup() {
 
 function expectLight(toggle) {
   expect(toggle).toHaveAccessibleName('Switch to dark theme');
+  expect(toggle).toHaveAttribute('title', 'Switch to dark theme');
   expect(toggle).toHaveAttribute('aria-pressed', 'false');
   expect(toggle.innerHTML).toBe(iconMarkup(MoonIcon));
 }
 
 function expectDark(toggle) {
   expect(toggle).toHaveAccessibleName('Switch to light theme');
+  expect(toggle).toHaveAttribute('title', 'Switch to light theme');
   expect(toggle).toHaveAttribute('aria-pressed', 'true');
   expect(toggle.innerHTML).toBe(iconMarkup(SunIcon));
 }

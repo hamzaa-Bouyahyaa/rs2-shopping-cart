@@ -20,13 +20,15 @@ export default function ThemeToggle() {
   }, []);
 
   const isDark = theme === 'dark';
+  const label = isDark ? 'Switch to light theme' : 'Switch to dark theme';
 
   return (
     <button
       type="button"
       className="theme-toggle"
       aria-pressed={isDark}
-      aria-label={isDark ? 'Switch to light theme' : 'Switch to dark theme'}
+      aria-label={label}
+      title={label}
       onClick={() => setTheme(toggleTheme())}
     >
       {isDark ? <SunIcon /> : <MoonIcon />}
