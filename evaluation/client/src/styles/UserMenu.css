@@ -13,16 +13,16 @@
 /* Outlined so the filled gradient stays reserved for the primary action. */
 .user-menu-panel button {
   padding: 0.5rem 1.125rem;
-  color: var(--brand);
+  color: var(--brand-text);
   background-color: var(--surface);
   background-image: none;
-  border-color: rgba(50, 65, 217, 0.32);
+  border-color: var(--brand-border);
 }
 
 .user-menu-panel button:hover:enabled {
-  color: var(--brand-dark);
+  color: var(--brand-text-strong);
   background-color: var(--brand-wash);
-  border-color: var(--brand);
+  border-color: var(--brand-text);
   box-shadow: none;
   filter: none;
 }
@@ -44,7 +44,7 @@
   }
 
   .user-menu-toggle:hover:enabled {
-    color: var(--brand);
+    color: var(--brand-text);
     background: none;
     transform: none;
     box-shadow: none;

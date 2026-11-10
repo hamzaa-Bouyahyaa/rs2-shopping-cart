@@ -6,8 +6,8 @@
   min-height: 100vh;
   padding: 1.5rem;
   background-image:
-    radial-gradient(46rem 30rem at 50% -8%, rgba(77, 110, 255, 0.14), transparent 62%),
-    radial-gradient(34rem 24rem at 8% 105%, rgba(50, 65, 217, 0.08), transparent 60%);
+    radial-gradient(46rem 30rem at 50% -8%, var(--page-wash-1), transparent 62%),
+    radial-gradient(34rem 24rem at 8% 105%, var(--page-wash-2), transparent 60%);
 }
 
 .login-card {
@@ -75,7 +75,7 @@
 }
 
 .password-field .password-toggle:hover:enabled {
-  color: var(--brand);
+  color: var(--brand-text);
   transform: none;
   box-shadow: none;
   filter: none;
@@ -109,6 +109,6 @@
   color: var(--error);
   font-size: 0.8125rem;
   background-color: var(--error-wash);
-  border: 1px solid rgba(217, 45, 32, 0.22);
+  border: 1px solid var(--error-border);
   border-radius: var(--radius);
 }

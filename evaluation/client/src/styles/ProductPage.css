@@ -84,7 +84,7 @@
 .basket-count {
   padding: 0.125rem 0.625rem;
   font-size: 0.75rem;
-  color: var(--brand-dark);
+  color: var(--brand-text-strong);
   background-color: var(--brand-wash);
   border-radius: 999px;
 }
@@ -95,7 +95,7 @@
   color: var(--error);
   font-size: 0.8125rem;
   background-color: var(--error-wash);
-  border: 1px solid rgba(217, 45, 32, 0.22);
+  border: 1px solid var(--error-border);
   border-radius: var(--radius);
 }
 
