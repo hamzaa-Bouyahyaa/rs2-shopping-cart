@@ -1,0 +1,49 @@
+/* Plain icon button; the global gradient button style does not belong here. */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 0.375rem;
+  color: var(--ink);
+  background: none;
+  border: none;
+}
+
+.theme-toggle:hover:enabled {
+  color: var(--brand-text);
+  background: none;
+  transform: none;
+  box-shadow: none;
+  filter: none;
+}
+
+.theme-toggle svg {
+  display: block;
+  width: 1.375rem;
+  height: 1.375rem;
+}
+
+/* Product page: pushed right so it sits just before the user menu. */
+.product-header .theme-toggle {
+  margin-left: auto;
+  margin-right: 1rem;
+}
+
+/* Login page: pinned to the top-right corner of the page. */
+.login-page .theme-toggle {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+@media (max-width: 640px) {
+  .product-header .theme-toggle {
+    margin-right: 0.5rem;
+  }
+
+  .login-page .theme-toggle {
+    top: 0.75rem;
+    right: 0.75rem;
+  }
+}

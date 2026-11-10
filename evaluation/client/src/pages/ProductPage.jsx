@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import SearchPanel from '../components/SearchPanel';
 import ProductGrid from '../components/ProductGrid';
+import ThemeToggle from '../components/ThemeToggle';
 import UserMenu from '../components/UserMenu';
 import * as api from '../services/api';
 import '../styles/ProductPage.css';
@@ -77,6 +78,7 @@ export default function ProductPage({ user, onLogout }) {
           />
           <h1>Shopping Cart</h1>
         </div>
+        <ThemeToggle />
         <UserMenu user={user} onLogout={handleLogout} />
       </header>
 

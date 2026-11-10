@@ -67,7 +67,8 @@ client/
   src/
     pages/        LoginPage, ProductPage
     components/   LoginForm, SearchPanel, ProductGrid (+ component tests)
-    icons/        reusable SVG icon components (EyeIcon, EyeOffIcon)
+    icons/        reusable SVG icon components (EyeIcon, EyeOffIcon, SunIcon, MoonIcon)
+    theme/        light/dark theme choice (localStorage + <html data-theme>)
     services/     api.js, the only place that calls fetch
     validation/   product name rule + unit tests
     styles/       one CSS file per component, no inline styles
@@ -143,6 +144,8 @@ These were added deliberately after the core requirements were complete:
 - **Styling aligned to the RS2 brand.** : The visual system is taken from the Beyond by RS2 product site: Lexend typography, `#3241D9` as the primary colour with its `107deg` gradient on primary actions, near-black `#050505` text on an `#F8F8F8` canvas, `#E1E1E1` hairline borders and a 10px corner radius throughout. Secondary actions (Logout, Remove) are outlined rather than filled so the gradient marks only the primary action on each screen. Red sits outside the brand palette and is used solely for validation errors, which keeps the feedback the brief asks for unmissable. Lexend loads from Google Fonts and falls back to the system stack offline; all motion is disabled under `prefers-reduced-motion`.
 
 - **Dark colour palette** : the app follows the OS `prefers-color-scheme` setting with a dark set of values for the same CSS custom properties, and `<html data-theme="dark">` or `data-theme="light"` forces either theme. Brand-coloured text uses its own `--brand-text` tokens so the filled gradient buttons keep the original `#3241D9` to `#4D6EFF` colours in both themes, and the RS2 logo sits on a light rounded backing in dark mode. Rationale: shoppers on dark-mode devices should not be met by a bright white cart.
+
+- **Light/dark toggle** : a sun/moon button on the login page and in the product header switches the whole app between the two palettes in one click, whatever the OS is set to. The choice is saved in the browser under `rs2-theme` and a few-line inline script in `index.html` applies it before the stylesheet and React load, so a refresh or the next visit opens straight into the saved theme without a flash. With nothing saved the app keeps following the OS; clearing site storage brings that back. Rationale: the OS setting is a good default, but shoppers should be able to override it per browser.
 
 
 
