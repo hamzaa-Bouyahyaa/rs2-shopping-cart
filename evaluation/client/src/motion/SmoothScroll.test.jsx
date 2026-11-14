@@ -1,4 +1,5 @@
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest';
+import { StrictMode } from 'react';
 import { render, screen } from '@testing-library/react';
 import { gsap, ScrollTrigger } from './gsap';
 import SmoothScroll from './SmoothScroll';
@@ -101,6 +102,43 @@ describe('SmoothScroll with motion allowed', () => {
     expect(tickerRemove).toHaveBeenCalledWith(tick);
     expect(lenis.unsubscribers).toHaveLength(1);
     expect(lenis.unsubscribers[0]).toHaveBeenCalledTimes(1);
+  });
+
+  test('leaves nothing behind under StrictMode double effects', () => {
+    // gsap.ticker.add calls remove internally to dedupe, so track the live
+    // callbacks directly instead of diffing spy calls.
+    const liveTicks = new Set();
+    tickerAdd.mockImplementation((cb) => liveTicks.add(cb));
+    tickerRemove.mockImplementation((cb) => liveTicks.delete(cb));
+
+    const { unmount } = render(
+      <StrictMode>
+        <SmoothScroll>
+          <p>Shop content</p>
+        </SmoothScroll>
+      </StrictMode>,
+    );
+
+    // Only one Lenis instance and one ticker callback are live after the
+    // double effect run; the first run's are already torn down.
+    expect(lenisMock.instances).toHaveLength(2);
+    const live = lenisMock.instances.filter((l) => l.destroy.mock.calls.length === 0);
+    expect(live).toHaveLength(1);
+    expect(liveTicks.size).toBe(1);
+
+    unmount();
+
+    lenisMock.instances.forEach((l) => {
+      expect(l.destroy).toHaveBeenCalledTimes(1);
+      l.unsubscribers.forEach((off) => expect(off).toHaveBeenCalledTimes(1));
+    });
+    expect(liveTicks.size).toBe(0);
+  });
+
+  test('renders its children with no wrapper element', () => {
+    const { container } = renderSmoothScroll();
+    expect(container.childNodes).toHaveLength(1);
+    expect(container.firstChild.tagName).toBe('P');
   });
 });
 
