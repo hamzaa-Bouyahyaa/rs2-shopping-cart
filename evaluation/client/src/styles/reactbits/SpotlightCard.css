@@ -1,0 +1,35 @@
+/* SpotlightCard. The highlight is a radial gradient of --brand-wash that fades
+   into --surface (the card's own background). It is drawn as two stacked
+   layers so the faint light-mode wash is still noticeable. --spotlight-x and
+   --spotlight-y are set from JS on pointer move and default to the centre. */
+.card-spotlight {
+  --spotlight-x: 50%;
+  --spotlight-y: 50%;
+
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 2rem;
+  background-color: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.card-spotlight::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    radial-gradient(circle 18rem at var(--spotlight-x) var(--spotlight-y), var(--brand-wash), var(--surface)),
+    radial-gradient(circle 18rem at var(--spotlight-x) var(--spotlight-y), var(--brand-wash), var(--surface));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.card-spotlight:hover::before,
+.card-spotlight:focus-within::before {
+  opacity: 1;
+}
