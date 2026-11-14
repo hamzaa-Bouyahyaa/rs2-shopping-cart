@@ -1,0 +1,4 @@
+/* Equal-width digits so the number does not jitter while counting. */
+.count-up {
+  font-variant-numeric: tabular-nums;
+}

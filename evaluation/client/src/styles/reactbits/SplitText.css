@@ -1,0 +1,32 @@
+/* SplitText host. Split pieces start visible; GSAP alone applies the hidden
+   "from" state when it animates, so the text stays readable without JS. */
+.split-parent {
+  display: inline-block;
+  overflow: hidden;
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+
+.split-parent--left {
+  text-align: left;
+}
+
+.split-parent--center {
+  text-align: center;
+}
+
+.split-parent--right {
+  text-align: right;
+}
+
+.split-parent--start {
+  text-align: start;
+}
+
+.split-parent--end {
+  text-align: end;
+}
+
+.split-parent--justify {
+  text-align: justify;
+}
